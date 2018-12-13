@@ -1,0 +1,15 @@
+'use strict';
+let express = require('express');
+let morgen = require('../');
+
+let app = express();
+app.use(morgen(':method  :url  :status  :date[iso]  :response-time  :res[content-length]  '));
+app.get('/', function(req, res){
+  res.send('Hello World');
+});
+
+if (!module.parent) {
+  app.listen(3000);
+  console.log('Express started on port 3000');
+}
+
